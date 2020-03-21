@@ -56,6 +56,8 @@ RUN pecl channel-update pecl.php.net \
   && docker-php-ext-enable xdebug \
   && sed -i -e 's/^zend_extension/\;zend_extension/g' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
+RUN docker-php-ext-enable sockets
+
 # install composer
 RUN EXPECTED_SIGNATURE="$(curl -s https://composer.github.io/installer.sig)" \
     && php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
